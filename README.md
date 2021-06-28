@@ -100,4 +100,14 @@ Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_
 | quantity_product  | Integer      |        | จำนวนสินค้าในตะกร้า
 | price_product | Integer     |        | ราคาสินค้าในตะกร้า
  
-
+## ข้อแนะนำการใช้งาน
+- ให้ทำการเรียกใช้งาน API ในการสร้าง user
+- ทำการเรียกใช้งาน API ในการสร้าง product
+- ลองเรียกใช้งาน API สำหรับแสดง user ทั้งหมด และคัดลอก user_id ไว้
+- ลองเรียกใช้งาน API สำหรับแสดงรายการสินค้าทั้งหมดจากตาราง products และคัดลอก product_id ไว้
+- เรียกใช้งาน API สำหรับเพิ่มสินค้าลงตะกร้า โดยนำ product_id ใส่ไว้ที่ Path Query และ user_id อยู่ใน body สามารถดูเพิ่มเติมจากด้านบนได้
+- ลองเรียกใช้งาน API สำหรับแสดงรายการสินค้าในตะกร้า เฉพาะบุคคล โดยส่ง product_id ไว้ในส่วน Path Query และ user_id อยู่ใน body สามารถดูเพิ่มเติมจากด้านบนได้
+- สามารถลองเรียกใช้งาน API สำหรับลบรายการสินค้าออกจากตะกร้าสินค้า เฉพาะบุคคล โดยส่ง product_id ไว้ในส่วน Path Query และ user_id อยู่ใน body สามารถดูเพิ่มเติมจากด้านบนได้
+    
+## Deployment
+deployment on heroku: https://api-add-to-cart-app.herokuapp.com/
