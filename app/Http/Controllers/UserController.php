@@ -6,12 +6,20 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Models\User;
+
 use Carbon\Carbon;
+
 
 use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    public function get_all_user(Request $request) {
+        $get_user = DB::table('users')->get();
+        return $get_user;
+    }
+
     public function create_user(Request $request) {
         DB::beginTransaction();
         try {

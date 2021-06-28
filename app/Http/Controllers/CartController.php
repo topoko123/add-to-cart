@@ -108,5 +108,29 @@ class CartController extends Controller
             //                 ->header('Content-Type', 'application/json');
             return $e;
         }
+        
+    }
+    public function remove_product_in_cart(Request $request, $product_id) {
+        try {
+            
+            $delete_product_in_cart = Cart::where('product_id', $product_id)->where('user_id', $request->user_id)->first();
+            if ($delete_product_in_cart) {
+                $delete_product_in_cart->delete();
+
+                return response()
+                            ->Json(['message'=>'delete success'])
+                            ->setStatusCode(200)
+                            ->header("Content-Type", "application/json");
+            }
+            else {
+                return response()
+                            ->Json(['message'=>'Not Found Product ID'])
+                            ->setStatusCode(200)
+                            ->header("Content-Type", "application/json");
+            }   
+        }
+        catch (\Exception $e) {
+            return $e;
+        }
     }
 }

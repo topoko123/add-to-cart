@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,9 +16,8 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->user == "Thanwa") {
-            return $next($request);
-        }
-        return redirect('/');
+        // $check_user = User::where('user_id', $request->user_id)->first();
+        // return $check_user;
+        // return redirect('/');
     }
 }

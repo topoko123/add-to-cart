@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 | User API
 |--------------------------------------------------------------------------
 */
-
+Route::get('/read/all/user', [UserController::class, 'get_all_user']);
 Route::post('/create/user', [UserController::class, 'create_user']);
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ Route::delete('/product/del/{product_id}', [ProductController::class, 'removePro
 */
 Route::get('/read/product/cart/{user_id}', [CartController::class, 'read_product_all_in_cart']);
 Route::post('/add/product/cart/{product_id}', [CartController::class, 'add_product_to_cart']);
-
+Route::delete('/cart/del/{product_id}', [CartController::class, 'remove_product_in_cart']);
 /*
 |--------------------------------------------------------------------------
 */
