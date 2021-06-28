@@ -1,62 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Add to Cart
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## จัดทำโดยใช้โครงสร้าง สถาปัตยกรรม MVC 
 
-## About Laravel
+## Requirement
+- ไม่ต้องมีใน่ส่วนของ View (M "V" C)                  /
+- ทำระบบ Add to Cart (ระบบตะกร้าสินค้า)             /
+- มี Model อย่างน้อยสอง Model เช่น Product , Users  /
+- มีการใช้งาน Middleware                          X
+- เลือกใช้งาน Database                            /
+- PHP Laravel                                  /
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ในส่วนที่ใช้เครื่องหมาย x คือทำไม่เสร็จ 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Using
+สิ่งที่นำมาใช้ในตัวงานมีดังนี้
+- Database -> PosgreSQL
+- Model User, Product, Cart
+- จัดทำ API
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* API ที่จัดทำมีดังนี้
+Routes: https://api-add-to-cart-app.herokuapp.com/api/create/user
+เป็น API สำหรับเพิ่ม user โดบ user_id จะถูก gen จาก uuid โดยจะ parameter ที่ต้องกำหนดดังนี้
+header = Content-Type, application/json
+body = name: <yourname>, email: <youremail>, password:<yourpass> <<-- ไม่ได้มีการ hash
 
-## Learning Laravel
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/read-product
+เป็น API สำหรับแสดงรายการสินค้าทั้งหมด
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/add
+เป็น API สำหรับเพิ่มรายการสินค้าลงฐานข้อมูล โดยจะ parameter ที่ต้องกำหนดดังนี้
+header = Content-Type, application/json
+body = product_name: string, price: int , quantity: int
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/{ตรงนี้ใส่เป็น Path query: product_id}
+เป็น API สำหรับลบรายการสินค้าออกจากตารางสินค้า แต่ว่าไม่ได้ลบโดยอ้างอิงจาก id ของผู้ใช้ แต่จะอ้างอิงโดยใช้แค่ product_id เท่านั้น เช่น
+        https://api-add-to-cart-app.herokuapp.com/api/product/del/941b9e9d94edd9451d9bbb89d5eb82d431aa  <-- product_id
+                                                                                                            
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/{user_id}
+เป็น API สำหรับเรียกดูรายการสินค้าทั้งหมดที่เรานำใส่ไว้ในตะกร้าสินค้า โดยส่งมาเป็น Path Query : user_id เช่น
+        https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/2ee39a89297cd24653297c824b5026f27875 <-- user_id
 
-## Laravel Sponsors
+Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_id}
+เป็น API สำหรับเพิ่มสินค้าลงตระก้าสินค้า โดยข้อกำหนดในการส่งมีดังนี้
+Path Query : product_id
+header = Content-Type, application/json
+body = user_id: string, quantity_product: int, price_product: int
+ex:{
+    "user_id":"2ee39a89297cd24653297c824b5026f27875",
+    "quantity_product": 3,
+    "price_product": 3600
+}
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ 
