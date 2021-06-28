@@ -12,7 +12,7 @@
 
 ในส่วนที่ใช้เครื่องหมาย x คือทำไม่เสร็จ 
 
-### Using
+## Using
 สิ่งที่นำมาใช้ในตัวงานมีดังนี้
 - Database -> PosgreSQL
 - Model User, Product, Cart
@@ -61,4 +61,43 @@ Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_
 - body = user_id: string, quantity_product: int, price_product: int
 
 
+## สิ่งที่ไม่ได้ใช้
+- Authentication & Authorization
+- Token
+- Middleware
+    
+ ## โครงสร้างของตาราง
+    
+ ### users table 
+
+| Field | Type/size | option | description
+| ------    | ------      | ------ | ------ |
+| id        |  Integer    | PK     | index
+| user_id   |  String     | UQ     | รหัสผู้ใช้
+| name      |  String     |        | ชื่อเต็ม
+| email     | String      | UQ     | อีเมล
+| password  | String      |        | รหัสผ่าน
+
+ ### products table 
+
+| Field | Type/size | option | description
+| ------    | ------      | ------ | ------ |
+| id        |  Integer    | PK     | index
+| product_id|  String     | UQ     | รหัสผู้ใช้
+| product_name |  String  |        | ชื่อสินค้า
+| price     | Integer     |        | ราคา
+| quantity  | Integer      |        | จำนวน
  
+จากตาราง products จะเห็นได้ว่าไม่ได้ทำ Normalization เพื่อแยกในส่วนของ Cagetory ของสินค้าออกมาอีกตาราง
+  
+ ### cart table 
+
+| Field | Type/size | option | description
+| ------    | ------      | ------ | ------ |
+| id        |  Integer    | PK     | index
+| user_id   |  String     | FK     | รหัสผู้ใช้->user
+| product_id  |  String   | FK     | รหัสสินค้า->products
+| quantity_product  | Integer      |        | จำนวนสินค้าในตะกร้า
+| price_product | Integer     |        | ราคาสินค้าในตะกร้า
+ 
+
