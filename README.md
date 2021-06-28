@@ -21,12 +21,15 @@
 ### API ที่จัดทำมีดังนี้
 ```sh
 Routes: https://api-add-to-cart-app.herokuapp.com/api/create/user
-เป็น API สำหรับเพิ่ม user โดบ user_id จะถูก gen จาก uuid โดยจะ parameter ที่ต้องกำหนดดังนี้
-header = Content-Type, application/json
-body = name: <yourname>, email: <youremail>, password:<yourpass> <<-- ไม่ได้มีการ hash
 ```
-
-- Routes: https://api-add-to-cart-app.herokuapp.com/api/product/read-product
+-เป็น API สำหรับเพิ่ม user โดบ user_id จะถูก gen จาก uuid โดยจะ parameter ที่ต้องกำหนดดังนี้
+-header = Content-Type, application/json
+-body = name: <yourname>, email: <youremail>, password:<yourpass> <<-- ไม่ได้มีการ hash
+    
+    
+ ```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/read-product
+```
 - เป็น API สำหรับแสดงรายการสินค้าทั้งหมด
 
 - Routes: https://api-add-to-cart-app.herokuapp.com/api/product/add
