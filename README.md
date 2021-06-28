@@ -32,20 +32,29 @@ Routes: https://api-add-to-cart-app.herokuapp.com/api/product/read-product
 ```
 - เป็น API สำหรับแสดงรายการสินค้าทั้งหมด
 
-- Routes: https://api-add-to-cart-app.herokuapp.com/api/product/add
+    
+```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/add
+```
 - เป็น API สำหรับเพิ่มรายการสินค้าลงฐานข้อมูล โดยจะ parameter ที่ต้องกำหนดดังนี้
 - header = Content-Type, application/json
 - body = product_name: string, price: int , quantity: int
 
-- Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/{ตรงนี้ใส่เป็น Path query: product_id}
+```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/{product_id}
+```
 - เป็น API สำหรับลบรายการสินค้าออกจากตารางสินค้า แต่ว่าไม่ได้ลบโดยอ้างอิงจาก id ของผู้ใช้ แต่จะอ้างอิงโดยใช้แค่ product_id เท่านั้น เช่น
 - ex: https://api-add-to-cart-app.herokuapp.com/api/product/del/941b9e9d94edd9451d9bbb89d5eb82d431aa  <-- product_id
-                                                                                                            
-- Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/{user_id}
+   
+```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/{user_id}
+```
 - เป็น API สำหรับเรียกดูรายการสินค้าทั้งหมดที่เรานำใส่ไว้ในตะกร้าสินค้า โดยส่งมาเป็น Path Query : user_id เช่น
 - ex: https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/2ee39a89297cd24653297c824b5026f27875 <-- user_id
 
-- Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_id}
+```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_id}
+```
 - เป็น API สำหรับเพิ่มสินค้าลงตระก้าสินค้า โดยข้อกำหนดในการส่งมีดังนี้
 - Path Query : product_id
 - header = Content-Type, application/json
