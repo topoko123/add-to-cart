@@ -22,33 +22,44 @@
 ```sh
 Routes: https://api-add-to-cart-app.herokuapp.com/api/create/user
 ```
-- เป็น API สำหรับเพิ่ม user โดบ user_id จะถูก gen จาก uuid โดยจะ parameter ที่ต้องกำหนดดังนี้
+- เป็น API สำหรับเพิ่ม user โดย user_id จะถูก gen จาก uuid โดยจะ parameter ที่ต้องกำหนดดังนี้
 - header = Content-Type, application/json
+- method = post
 - body = name: <yourname>, email: <youremail>, password:<yourpass> <<-- ไม่ได้มีการ hash
-    
+
+```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/read/all/user
+```
+- เป็น API สำหรับแสดงข้อมูล user ทั้งหมด โดยสามารถเรียกใช้งานเพื่อดู user_id แล้วนำไปใช้กับ API อื่น ๆ
+- method = get
     
  ```sh
 Routes: https://api-add-to-cart-app.herokuapp.com/api/product/read-product
 ```
 - เป็น API สำหรับแสดงรายการสินค้าทั้งหมด
+- method = get
 
     
 ```sh
 Routes: https://api-add-to-cart-app.herokuapp.com/api/product/add
 ```
+
 - เป็น API สำหรับเพิ่มรายการสินค้าลงฐานข้อมูล โดยจะ parameter ที่ต้องกำหนดดังนี้
 - header = Content-Type, application/json
+- method = post
 - body = product_name: string, price: int , quantity: int
 
 ```sh
 Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/{product_id}
 ```
+- method = get
 - เป็น API สำหรับลบรายการสินค้าออกจากตารางสินค้า แต่ว่าไม่ได้ลบโดยอ้างอิงจาก id ของผู้ใช้ แต่จะอ้างอิงโดยใช้แค่ product_id เท่านั้น เช่น
 - ex: https://api-add-to-cart-app.herokuapp.com/api/product/del/941b9e9d94edd9451d9bbb89d5eb82d431aa  <-- product_id
    
 ```sh
 Routes: https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/{user_id}
 ```
+- method = get
 - เป็น API สำหรับเรียกดูรายการสินค้าทั้งหมดที่เรานำใส่ไว้ในตะกร้าสินค้า โดยส่งมาเป็น Path Query : user_id เช่น
 - ex: https://api-add-to-cart-app.herokuapp.com/api/product/del/read/product/cart/2ee39a89297cd24653297c824b5026f27875 <-- user_id
 
@@ -58,7 +69,16 @@ Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_
 - เป็น API สำหรับเพิ่มสินค้าลงตระก้าสินค้า โดยข้อกำหนดในการส่งมีดังนี้
 - Path Query : product_id
 - header = Content-Type, application/json
+- method = post
 - body = user_id: string, quantity_product: int, price_product: int
 
+```sh
+Routes: https://api-add-to-cart-app.herokuapp.com/api/cart/del/{product_id}
+```
+- เป็น API สำหรับลบสินค้าออกจากตะกร้าสินค้า โดยข้อกำหนดที่ต้องส่งมีดังนี้
+- Path Query : product_id
+- header = Content-Type, application/json
+- method = delete
+- body = user_id: string
 
  
