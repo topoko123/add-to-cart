@@ -100,6 +100,8 @@ Routes: https://api-add-to-cart-app.herokuapp.com/api/add/product/cart/{product_
 | quantity_product  | Integer      |        | จำนวนสินค้าในตะกร้า
 | price_product | Integer     |        | ราคาสินค้าในตะกร้า
  
+จากตาราง cart table จะเป็นตารางที่จะมีการจัดเก็บ user_id -> FK และ product_id -> FK เพื่อใช้อ้างอิงถึงข้อมูลของตารางอื่น ๆ
+    
 ## ข้อแนะนำการใช้งาน
 - ให้ทำการเรียกใช้งาน API ในการสร้าง user
 - ทำการเรียกใช้งาน API ในการสร้าง product
