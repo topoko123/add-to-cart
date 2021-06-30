@@ -3,7 +3,7 @@
 ## จัดทำโดยใช้โครงสร้าง สถาปัตยกรรม MVC 
 
 ## Requirement
-- [x] ไม่ต้องมีใน่ส่วนของ View (M "V" C)
+- [x] ไม่ต้องมีในส่วนของ View (M "V" C)
 - [x] ทำระบบ Add to Cart (ระบบตะกร้าสินค้า) 
 - [x] มี Model อย่างน้อยสอง Model เช่น Product , Users
 - [ ] มีการใช้งาน Middleware
