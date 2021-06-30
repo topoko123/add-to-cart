@@ -3,14 +3,12 @@
 ## จัดทำโดยใช้โครงสร้าง สถาปัตยกรรม MVC 
 
 ## Requirement
-- ไม่ต้องมีใน่ส่วนของ View (M "V" C)                  /
-- ทำระบบ Add to Cart (ระบบตะกร้าสินค้า)             /
-- มี Model อย่างน้อยสอง Model เช่น Product , Users  /
-- มีการใช้งาน Middleware                          X
-- เลือกใช้งาน Database                            /
-- PHP Laravel                                  /
-
-ในส่วนที่ใช้เครื่องหมาย x คือทำไม่เสร็จ 
+- [x] ไม่ต้องมีใน่ส่วนของ View (M "V" C)
+- [x] ทำระบบ Add to Cart (ระบบตะกร้าสินค้า) 
+- [x] มี Model อย่างน้อยสอง Model เช่น Product , Users
+- [ ] มีการใช้งาน Middleware
+- [x] เลือกใช้งาน Database
+- [x] PHP Laravel
 
 ## Using
 สิ่งที่นำมาใช้ในตัวงานมีดังนี้
